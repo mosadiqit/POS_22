@@ -27,7 +27,7 @@ odoo.define('aar_pos_ticket.screens', function (require) {
             });
         },       
         show: function () {
-            this._super();                       
+            this._super();
             try {
                 JsBarcode("#barcode", this.pos.get('selectedOrder').ean13, {
                     format: "EAN13",
@@ -37,6 +37,7 @@ odoo.define('aar_pos_ticket.screens', function (require) {
             } catch (error) {
             }
         },
+
         
     });
 

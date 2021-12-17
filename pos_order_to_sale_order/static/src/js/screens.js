@@ -47,11 +47,12 @@ odoo.define('pos_order_to_sale_order.screens', function (require) {
                     model: 'sale.order',
                     method: 'create_order_from_pos',
                     args: [self.pos.get('selectedOrder').export_as_JSON(), action],
-                }).then(function (result) {
-                    self.hook_create_sale_1_order_success(result);
-                }).fail(function (error, event) {
-                    self.hook_create_sale_1_order_error(error, event);
                 });
+//                .then(function (result) {
+//                    self.hook_create_sale_1_order_success(result);
+//                }).fail(function (error, event) {
+//                    self.hook_create_sale_1_order_error(error, event);
+//                });
             },
             });
         },
