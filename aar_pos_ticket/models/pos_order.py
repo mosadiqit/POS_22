@@ -31,3 +31,10 @@ class pos_order(models.Model):
             })
             
         return order_fields
+
+class PosConfig(models.Model):
+    _inherit = "pos.config"
+
+    print_once = fields.Boolean(
+        string="Print Once",
+        store=True)

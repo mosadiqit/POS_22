@@ -1,6 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
+        <!-- Inherit pos config , adding print once -->
+        <record id="view_pos_config_form_inherit" model="ir.ui.view">
+            <field name="model">pos.config</field>
+            <field name="inherit_id" ref="point_of_sale.pos_config_view_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//h2[@name='order']" position="before">
+                    <h2 name="disallow_print_more">Disallow multiple print</h2>
+
+                    <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_left_pane">
+                            <field name="print_once"/>
+                        </div>
+                        <div class="o_setting_right_pane">
+                            <label for="print_once"/>
+                        </div>
+                    </div>
+                    </div>
+                </xpath>
+
+            </field>
+        </record>
+
         <record id="ticket_view_pos_pos_form" model="ir.ui.view">
             <field name="name">pos.order.ticket.form</field>
             <field name="model">pos.order</field>
@@ -9,19 +33,19 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="ean13"/>
                 </xpath>
-                
+
             </field>
         </record>
 
-        <record id="ticket_view_pos_order_tree" model="ir.ui.view" >
+        <record id="ticket_view_pos_order_tree" model="ir.ui.view">
             <field name="name">pos.order.ticket.tree</field>
             <field name="model">pos.order</field>
             <field name="inherit_id" ref="point_of_sale.view_pos_order_tree"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="before">
-                    <field name="ean13"/>                    
+                    <field name="ean13"/>
                 </xpath>
-                
+
             </field>
         </record>
 
@@ -31,11 +55,11 @@
             <field name="inherit_id" ref="point_of_sale.view_pos_order_filter"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='name']" position="before">
-                    <field name="ean13"/>                    
+                    <field name="ean13"/>
                 </xpath>
             </field>
         </record>
-        
+
     </data>
 </odoo>
 
