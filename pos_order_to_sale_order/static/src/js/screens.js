@@ -32,27 +32,16 @@ odoo.define('pos_order_to_sale_order.screens', function (require) {
         },
 
         click_sale_1_order_button: function(action) {
-        var self = this;
-        this.gui.show_popup('confirm', {
-            'title': _t(
-                'Create Sale Order and discard the current' +
-                ' PoS Order?'),
-            'body': _t(
-                "This operation will permanently discard the current PoS" +
-                " Order and create a Sale Order, based on the" +
-                " current order lines."),
-            confirm: function(){
-                framework.blockUI();
-                rpc.query({
-                    model: 'sale.order',
-                    method: 'create_order_from_pos',
-                    args: [self.pos.get('selectedOrder').export_as_JSON(), action],
-                }).then(function (result) {
-                    self.hook_create_sale_1_order_success(result);
-                }).fail(function (error, event) {
-                    self.hook_create_sale_1_order_error(error, event);
-                });
-            },
+            var self = this;
+            framework.blockUI();
+            rpc.query({
+                model: 'sale.order',
+                method: 'create_order_from_pos',
+                args: [self.pos.get('selectedOrder').export_as_JSON(), action],
+            }).then(function (result) {
+                self.hook_create_sale_1_order_success(result);
+            }).fail(function (error, event) {
+                self.hook_create_sale_1_order_error(error, event);
             });
         },
 
