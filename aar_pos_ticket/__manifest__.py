@@ -21,7 +21,7 @@
     'company': 'AARSOL (Pvt) Limited.',
     'website': 'http://www.aarsol.com',
     'category': 'Point of Sale',
-    'depends': ['base', 'point_of_sale'],
+    'depends': ['base', 'point_of_sale','zero_pos_logo'],
     'license': 'OPL-1',
     'data': [
     	'views/import.xml', 
